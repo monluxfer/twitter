@@ -8,7 +8,7 @@ defmodule Twitter.Accounts.User do
 
   schema "users" do
     field :email, :string
-    field :password, :string, virtual: true # нет в базе данных
+    #field :password, :string, virtual: true # нет в базе данных
     field :password_hash, :string
     field :username, :string
     field :name, :string
