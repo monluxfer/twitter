@@ -3,6 +3,8 @@ defmodule Twitter.Accounts.User do
 
   import Ecto.Changeset
 
+
+
   @required [:email, :password_hash, :username]
   @optional [:name, :bio]
 
@@ -13,6 +15,8 @@ defmodule Twitter.Accounts.User do
     field :username, :string
     field :name, :string
     field :bio, :string
+
+    has_many :tweets, Tweet
 
     timestamps()
   end
