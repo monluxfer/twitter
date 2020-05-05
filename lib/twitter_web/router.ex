@@ -28,6 +28,7 @@ defmodule TwitterWeb.Router do
     pipe_through :api
 
     resources "/users", UsersController, only: [:create]
+    resources "/tweets", TweetsController, only: [:index, :create]
   end
 
   # Enables LiveDashboard only for development

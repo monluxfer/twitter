@@ -3,7 +3,7 @@ defmodule Twitter.Accounts.User do
 
   import Ecto.Changeset
 
-
+  alias Twitter.Tweets.Tweet
 
   @required [:email, :password_hash, :username]
   @optional [:name, :bio]
