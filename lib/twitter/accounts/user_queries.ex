@@ -1,5 +1,4 @@
 defmodule Twitter.Accounts.UserQueries do
-  # описание взаимодействия с базой
 
   alias Twitter.Repo
   alias Twitter.Accounts.User
