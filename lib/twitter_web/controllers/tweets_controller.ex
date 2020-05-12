@@ -3,6 +3,11 @@ defmodule TwitterWeb.TweetsController do
 
     alias Twitter.Tweets
 
+    def tweetreplies(conn, %{"id" => id}) do
+        replies = Tweets.tweetreplies(id)
+        render(conn, "tweetreplies.json", %{replies: replies})
+    end
+
     def index(conn, _) do
         tweets = Tweets.recent_tweets()
         render(conn, "index.json", %{tweets: tweets})
