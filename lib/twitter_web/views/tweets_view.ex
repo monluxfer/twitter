@@ -9,6 +9,7 @@ defmodule TwitterWeb.TweetsView do
     %{
       id: tweet.id,
       text: tweet.text,
+      user_id: tweet.user_id,
       inserted_at: tweet.inserted_at
     }
   end

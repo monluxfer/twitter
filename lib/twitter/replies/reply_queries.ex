@@ -12,7 +12,10 @@ defmodule Twitter.Replies.ReplyQueries do
     end
 
     def recent() do
-        query = from reply in Reply, order_by: [desc: reply.inserted_at]
+        query = from(
+            reply in Reply,
+            order_by: [desc: reply.inserted_at]
+        )
         Repo.all(query)
     end
 end

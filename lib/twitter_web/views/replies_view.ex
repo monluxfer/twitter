@@ -9,6 +9,7 @@ defmodule TwitterWeb.RepliesView do
         %{
             id: reply.id,
             text: reply.text,
+            tweet_id: reply.tweet_id,
             inserted_at: reply.inserted_at
         }
     end

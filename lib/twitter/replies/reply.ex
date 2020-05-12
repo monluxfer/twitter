@@ -6,7 +6,7 @@ defmodule Twitter.Replies.Reply do
     alias Twitter.Accounts.User
     alias Twitter.Tweets.Tweet
 
-    @required [:text, :user_id]
+    @required [:text, :user_id, :tweet_id]
     @optional []
 
     schema "replies" do
