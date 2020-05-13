@@ -29,8 +29,7 @@ defmodule TwitterWeb.Router do
 
     resources "/users", UsersController, only: [:create]
     resources "/tweets", TweetsController, only: [:index, :create]
-    resources "/replies", RepliesController, only: [:index, :create]
-    get "/tweets/:id/replies", TweetsController, :tweetreplies
+    get "/tweets/:id/replies", TweetsController, :replies
   end
 
   # Enables LiveDashboard only for development

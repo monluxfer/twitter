@@ -3,9 +3,9 @@ defmodule TwitterWeb.TweetsController do
 
     alias Twitter.Tweets
 
-    def tweetreplies(conn, %{"id" => id}) do
-        replies = Tweets.tweetreplies(id)
-        render(conn, "tweetreplies.json", %{replies: replies})
+    def replies(conn, %{"id" => id}) do
+        replies = Tweets.replies_q(id)
+        render(conn, "replies.json", %{replies: replies})
     end
 
     def index(conn, _) do

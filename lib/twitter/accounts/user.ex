@@ -4,7 +4,6 @@ defmodule Twitter.Accounts.User do
   import Ecto.Changeset
 
   alias Twitter.Tweets.Tweet
-  alias Twitter.Replies.Reply
 
   @required [:email, :password_hash, :username]
   @optional [:name, :bio]
@@ -17,7 +16,6 @@ defmodule Twitter.Accounts.User do
     field :bio, :string
 
     has_many :tweets, Tweet
-    has_many :replies, Reply
 
     timestamps()
   end

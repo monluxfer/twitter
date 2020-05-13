@@ -4,16 +4,15 @@ defmodule Twitter.Tweets.Tweet do
     import Ecto.Changeset
 
     alias Twitter.Accounts.User
-    alias Twitter.Replies.Reply
 
     @required [:text, :user_id]
-    @optional []
+    @optional [:parent_id]
 
     schema "tweets" do
-	    field :text, :string
+        field :text, :string
+        field :parent_id, :integer
 
     belongs_to :user, User
-    has_many :replies, Reply
 
 	timestamps()
     end

@@ -2,14 +2,13 @@ defmodule Twitter.Tweets.TweetQueries do
 
     alias Twitter.Repo
     alias Twitter.Tweets.Tweet
-    alias Twitter.Replies.Reply
 
     import Ecto.Query
 
     def repl(id) do
         query = from(
-            reply in Reply,
-            where: reply.tweet_id == ^id,
+            reply in Tweet,
+            where: reply.parent_id == ^id
         )
         Repo.all(query)
     end
