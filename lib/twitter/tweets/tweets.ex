@@ -3,5 +3,5 @@ defmodule Twitter.Tweets do
 
   def create_tweet(attrs), do: TweetQueries.create(attrs)
   def recent_tweets(), do: TweetQueries.recent()
-  def replies_q(id), do: TweetQueries.repl(id)
+  def tweets_replies(id), do: TweetQueries.replies(id)
 end

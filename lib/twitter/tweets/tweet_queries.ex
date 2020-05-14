@@ -5,7 +5,7 @@ defmodule Twitter.Tweets.TweetQueries do
 
     import Ecto.Query
 
-    def repl(id) do
+    def replies(id) do
         query = from(
             reply in Tweet,
             where: reply.parent_id == ^id

@@ -1,10 +1,6 @@
 defmodule TwitterWeb.TweetsView do
     use TwitterWeb, :view
 
-    def render("replies.json", %{replies: replies}) do
-        render_many(replies, __MODULE__, "show.json", as: :tweet)
-    end
-
     def render("index.json", %{tweets: tweets}) do
         render_many(tweets, __MODULE__, "show.json", as: :tweet)
     end
