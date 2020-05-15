@@ -5,7 +5,9 @@ defmodule TwitterWeb.UsersController do
 
     def create(conn, params) do
         with{:ok, user} <- Accounts.create_user(params) do
-            render(conn, "show.json", %{user: user})
+            conn
+            |> put_status(:created)
+            |> render("show.json", %{user: user})
         end
     end
 end

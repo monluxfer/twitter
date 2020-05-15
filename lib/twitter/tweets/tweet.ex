@@ -1,8 +1,4 @@
 defmodule Twitter.Tweets.Tweet do
-    @moduledoc """
-    Tweet module
-    """
-
     use Ecto.Schema
 
     import Ecto.Changeset
@@ -21,9 +17,6 @@ defmodule Twitter.Tweets.Tweet do
 	timestamps()
     end
 
-    @doc """
-    Casting and valildation
-    """
     def changeset(tweet, attrs) do
         tweet
 	    |> cast(attrs, @required ++ @optional)
