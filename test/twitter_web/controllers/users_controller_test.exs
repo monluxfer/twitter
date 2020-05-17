@@ -1,8 +1,6 @@
 defmodule TwitterWeb.UsersControllerTest do
     use TwitterWeb.ConnCase
 
-    alias Twitter.Accounts
-
     #@create_user %{email: "some_email", password_hash: "some_hash", username: "some_username"}
 
     #def fixture(:user) do
