@@ -1,33 +1,49 @@
-#defmodule TwitterWeb.TweetsControllerTest do
-#    use TwitterWeb.ConnCase
-#    use Twitter.DataCase
-#
-#    alias Twitter.Accounts
-#
-#    @valid_user_attrs %{email: "some_email", password_hash: "some_hash", username: "some_username"}
-#
-#    def user_fixture(attrs \\ %{}) do
-#        {:ok, user} =
-#            attrs
-#            |> Enum.into(@valid_user_attrs)
-#            |> Accounts.create_user()
-#
-#        user
-#    end
-#
-#    setup %{conn: conn} do
-#        user = user_fixture()
-#        [conn: conn, user: user]
-#    end
-#
-#    describe "create" do
-#
-#        test "creates a tweet", %{conn: conn} do
-#            user = user_fixture()
-#            attrs = %{user_id: user.id, text: "some text"}
-#            conn = post(conn, Routes.users_path(conn, :create), attrs)
-#            assert "some text" = json_response(conn, 201)["text"]
-#        end
-#
-#    end
-#end
+defmodule TwitterWeb.TweetsControllerTest do
+    use TwitterWeb.ConnCase
+
+    import Twitter.Factory
+
+    describe "index" do
+
+        test "lists all tweets", %{conn: conn} do
+            tweet = insert(:tweet)
+            conn = get(conn, Routes.tweets_path(conn, :index))
+
+            assert tweet.id  == Enum.at(json_response(conn, 200), 0)["id"]
+            assert tweet.text  == Enum.at(json_response(conn, 200), 0)["text"]
+        end
+
+    end
+
+    describe "create" do
+
+        test "creates a tweet", %{conn: conn} do
+            user = insert(:user)
+            attrs = %{ text: "some text", user_id: user.id }
+            conn = post(conn, Routes.tweets_path(conn, :create), attrs)
+
+            assert "some text" == json_response(conn, 201)["text"]
+        end
+
+    end
+
+    describe "replies" do
+
+        test "lists all replies, but there is zero replies", %{conn: conn} do
+            tweet = insert(:tweet)
+            conn = get(conn, Routes.tweets_path(conn, :replies, tweet.id))
+
+            assert [] == json_response(conn, 200)
+        end
+
+        test "lists all replies", %{conn: conn} do
+            tweet = insert(:tweet)
+            reply = insert(:reply, parent_id: tweet.id)
+            conn = get(conn, Routes.tweets_path(conn, :replies, tweet.id))
+
+            assert reply.parent_id == Enum.at(json_response(conn, 200), 0)["parent_id"]
+        end
+
+    end
+
+end

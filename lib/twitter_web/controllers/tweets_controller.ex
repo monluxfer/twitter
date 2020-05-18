@@ -15,7 +15,9 @@ defmodule TwitterWeb.TweetsController do
 
     def create(conn, params) do
         with {:ok, tweet} <- Tweets.create_tweet(params) do
-            render(conn, "show.json", %{tweet: tweet})
+            conn
+            |> put_status(:created)
+            |> render("show.json", %{tweet: tweet})
         end
     end
 end
