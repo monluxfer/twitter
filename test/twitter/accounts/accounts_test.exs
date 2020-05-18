@@ -4,7 +4,6 @@ defmodule Twitter.AccountsTest do
     alias Twitter.Accounts
 
     describe "users" do
-        alias Twitter.Accounts.User
 
         @valid_attrs %{email: "some_email", password_hash: "some_password_hash", username: "some_username"}
 
@@ -18,7 +17,7 @@ defmodule Twitter.AccountsTest do
         end
 
         test "create_user with valid data creates a user" do
-            assert {:ok, %User{} = user} = Accounts.create_user(@valid_attrs)
+            user = user_fixture()
             assert user.email == "some_email"
             assert user.password_hash == "some_password_hash"
             assert user.username == "some_username"
