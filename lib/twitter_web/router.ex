@@ -1,6 +1,8 @@
 defmodule TwitterWeb.Router do
   use TwitterWeb, :router
 
+  alias Twitter.Guardian
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -11,6 +13,10 @@ defmodule TwitterWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+  end
+
+  pipeline :jwt_authenticated do
+    plug Guardian.AuthPipeline
   end
 
   scope "/", TwitterWeb do
@@ -36,6 +42,13 @@ defmodule TwitterWeb.Router do
     pipe_through :api
 
     post "/sign_up", UsersController, :create
+    post "/sign_in", UsersController, :sign_in
+  end
+
+  scope "/api/v1", TwitterWeb do
+    pipe_through [:api, :jwt_authenticated]
+
+    get "/my_user", UsersController, :show
   end
 
   # Enables LiveDashboard only for development
