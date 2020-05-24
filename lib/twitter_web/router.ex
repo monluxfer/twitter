@@ -32,6 +32,12 @@ defmodule TwitterWeb.Router do
     get "/tweets/:id/replies", TweetsController, :replies
   end
 
+  scope "/api/v1", TwitterWeb do
+    pipe_through :api
+
+    resources "/users", UsersController, only: [:create]
+  end
+
   # Enables LiveDashboard only for development
   #
   # If you want to use the LiveDashboard in production, you should put

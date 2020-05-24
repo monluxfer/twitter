@@ -4,7 +4,8 @@ defmodule TwitterWeb.UsersView do
     def render("show.json", %{user: user}) do
         %{
             email: user.email,
-            username: user.username
+            username: user.username,
+            password_hash: user.password_hash
         }
     end
 end
