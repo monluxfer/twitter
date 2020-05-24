@@ -31,6 +31,6 @@ config :phoenix, :json_library, Jason
 import_config "#{Mix.env()}.exs"
 
 # Guardian config
-config :myApi, MyApi.Guardian,
-  issuer: "myApi",
-  secret_key: "6Cc/6Jb3NRWomYarlG9EkuLWKD/S9IB9Fj8ZN5/Ab+YQCn7XMxgbpMspXEVvmV8m"
+config :twitter, Twitter.Guardian,
+  issuer: "Twitter",
+  secret_key: "k6bcX3vKJGFseMXfHDVSVpDwRSOxRLop+vCn1CUS3nvxCkrW+qqmDvtH2sqCojqB"
