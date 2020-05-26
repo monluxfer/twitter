@@ -24,7 +24,7 @@ defmodule TwitterWeb.UsersController do
     end
 
     def show(conn, _params) do
-        user = Guardian.Plug.current_resource(conn)
+        user = Guardian.Plug.current_resource(conn) |> Enum.at(0)
         conn
         |> render("user.json", user: user)
     end
