@@ -5,6 +5,7 @@ defmodule Twitter.Accounts.User do
     import Comeonin.Bcrypt, only: [hashpwsalt: 1]
 
     alias Twitter.Tweets.Tweet
+    alias Twitter.Likes.Like
 
     @required [:email, :username, :password, :password_confirmation]
     @optional [:name, :bio]
@@ -20,6 +21,7 @@ defmodule Twitter.Accounts.User do
         field :password_confirmation, :string, virtual: true
 
         has_many :tweets, Tweet
+        has_many :likes, Like
 
         timestamps()
     end

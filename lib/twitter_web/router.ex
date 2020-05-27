@@ -36,6 +36,7 @@ defmodule TwitterWeb.Router do
     resources "/users", UsersController, only: [:create]
     resources "/tweets", TweetsController, only: [:index, :create]
     get "/tweets/:id/replies", TweetsController, :replies
+    resources "/likes", LikesController, only: [:create]
   end
 
   scope "/api/v1", TwitterWeb do
