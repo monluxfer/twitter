@@ -29,4 +29,9 @@ defmodule TwitterWeb.TweetsController do
         end
     end
 
+    def rated(conn, %{"id" => id}) do
+        tweets = Tweets.rated_tweets(id)
+        render(conn, "index.json", %{tweets: tweets})
+    end
+
 end
