@@ -4,7 +4,7 @@ defmodule Twitter.Tweets.Tweet do
     import Ecto.Changeset
 
     alias Twitter.Accounts.User
-    alias Twitter.Likes.Like
+    alias Twitter.Tweets.Like
 
     @required [:text, :user_id]
     @optional [:parent_id]

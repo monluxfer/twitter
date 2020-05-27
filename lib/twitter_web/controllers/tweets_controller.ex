@@ -20,4 +20,13 @@ defmodule TwitterWeb.TweetsController do
             |> render("show.json", %{tweet: tweet})
         end
     end
+
+    def likes(conn, params) do
+        with {:ok, like} <- Tweets.create_like(params) do
+            conn
+            |> put_status(:created)
+            |> render("show_likes.json", %{like: like})
+        end
+    end
+
 end

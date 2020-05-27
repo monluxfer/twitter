@@ -1,7 +1,7 @@
-defmodule Twitter.Likes.LikeQueries do
+defmodule Twitter.Tweets.LikeQueries do
 
     alias Twitter.Repo
-    alias Twitter.Likes.Like
+    alias Twitter.Tweets.Like
 
     def create(attrs \\ %{}) do
         %Like{}

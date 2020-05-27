@@ -5,7 +5,7 @@ defmodule Twitter.Accounts.User do
     import Comeonin.Bcrypt, only: [hashpwsalt: 1]
 
     alias Twitter.Tweets.Tweet
-    alias Twitter.Likes.Like
+    alias Twitter.Tweets.Like
 
     @required [:email, :username, :password, :password_confirmation]
     @optional [:name, :bio]
