@@ -1,5 +1,6 @@
 defmodule Twitter.Accounts do
     alias Twitter.Accounts.UserQueries
+    alias Twitter.Accounts.FollowerQueries
     alias Twitter.Guardian
     alias Twitter.Accounts.User
     alias Twitter.Repo
@@ -8,6 +9,7 @@ defmodule Twitter.Accounts do
 
     def create_user(attrs), do: UserQueries.create(attrs)
     def get_user(id), do: UserQueries.get(id)
+    def create_follow(attrs), do: FollowerQueries.create(attrs)
 
     def token_sign_in(email, password) do
         case email_password_auth(email, password) do

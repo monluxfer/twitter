@@ -29,8 +29,18 @@ defmodule TwitterWeb.TweetsController do
         end
     end
 
-    def rated(conn, %{"id" => id}) do
-        tweets = Tweets.rated_tweets(id)
+    def rated(conn, %{"id" => user_id}) do
+        tweets = Tweets.rated_tweets(user_id)
+        render(conn, "index.json", %{tweets: tweets})
+    end
+
+    def feed(conn, %{"id" => user_id}) do
+        tweets = Tweets.tweets_feed(user_id)
+        render(conn, "index.json", %{tweets: tweets})
+    end
+
+    def following_likes(conn, %{"id" => user_id}) do
+        tweets = Tweets.following_likes(user_id)
         render(conn, "index.json", %{tweets: tweets})
     end
 

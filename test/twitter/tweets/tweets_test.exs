@@ -6,7 +6,7 @@ defmodule Twitter.TweetsTest do
 
     describe "tweets" do
 
-        @valid_user_attrs %{email: "some_email", password_hash: "some_hash", username: "some_username"}
+        @valid_user_attrs %{email: "some@email", username: "some_username", password: "password", password_confirmation: "password"}
 
         def user_fixture(attrs \\ %{}) do
             {:ok, user} =

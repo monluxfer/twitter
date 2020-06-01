@@ -34,11 +34,14 @@ defmodule TwitterWeb.Router do
     pipe_through :api
 
     resources "/users", UsersController, only: [:create]
+    post "/follow", UsersController, :follow
 
     resources "/tweets", TweetsController, only: [:index, :create]
     get "/tweets/:id/replies", TweetsController, :replies
     post "/likes", TweetsController, :likes
     get "/tweets/:id/likes", TweetsController, :rated
+    get "/users/:id/follow", TweetsController, :feed
+    get "/users/:id/likes", TweetsController, :following_likes
   end
 
   scope "/api/v1", TwitterWeb do

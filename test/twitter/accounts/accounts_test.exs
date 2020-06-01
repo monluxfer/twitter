@@ -5,7 +5,7 @@ defmodule Twitter.AccountsTest do
 
     describe "users" do
 
-        @valid_attrs %{email: "some_email", password_hash: "some_password_hash", username: "some_username"}
+        @valid_attrs %{email: "some@email", username: "some_username", password: "password", password_confirmation: "password"}
 
         def user_fixture(attrs \\ %{}) do
             {:ok, user} =
@@ -18,8 +18,7 @@ defmodule Twitter.AccountsTest do
 
         test "create_user with valid data creates a user" do
             user = user_fixture()
-            assert user.email == "some_email"
-            assert user.password_hash == "some_password_hash"
+            assert user.email == "some@email"
             assert user.username == "some_username"
         end
 

@@ -12,11 +12,11 @@ defmodule Twitter.Tweets.LikeQueries do
         |> Repo.insert()
     end
 
-    def rated(id) do
+    def rated(user_id) do
         query = from(
             tweet in Tweet,
             join: like in Like,
-            where: (like.user_id == ^id) and (tweet.id == ^id)
+            where: (like.user_id == ^user_id) and (tweet.user_id == ^user_id)
         )
         Repo.all(query)
     end

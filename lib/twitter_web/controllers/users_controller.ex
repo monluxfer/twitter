@@ -29,4 +29,12 @@ defmodule TwitterWeb.UsersController do
         |> render("user.json", user: user)
     end
 
+    def follow(conn, params) do
+        with {:ok, follow} <- Accounts.create_follow(params) do
+            conn
+            |> put_status(:created)
+            |> render("follow.json", %{follow: follow})
+        end
+    end
+
 end

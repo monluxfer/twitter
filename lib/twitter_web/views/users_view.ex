@@ -15,4 +15,11 @@ defmodule TwitterWeb.UsersView do
     }
     end
 
+    def render("follow.json", %{follow: follow}) do
+        %{
+            user_id: follow.user_id,
+            follower_id: follow.follower_id
+        }
+        end
+
 end
