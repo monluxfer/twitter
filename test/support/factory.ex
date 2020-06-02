@@ -50,4 +50,18 @@ defmodule Twitter.Factory do
     }
   end
 
+  def follower_factory do
+    %Twitter.Accounts.Follower{
+      user_id: build(:user).id,
+      follower_id: build(:user).id
+    }
+  end
+
+  def like_factory do
+    %Twitter.Tweets.Like{
+      tweet_id: build(:tweet).id,
+      user_id: build(:user).id
+    }
+  end
+
 end

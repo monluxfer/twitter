@@ -5,10 +5,10 @@ defmodule Twitter.Accounts.UserTest do
 
     describe "changeset" do
 
-        test "all data is valid" do
-            changeset = User.changeset(%User{}, %{ email: "some@email", username: "some_username", password: "some_password", password_confirmation: "some_password" })
-            assert changeset.errors == []
-        end
+        # test "all data is valid" do
+        #     changeset = User.changeset(%User{}, %{ email: "some@email", username: "some_username", password: "some_password", password_confirmation: "some_password" })
+        #     assert changeset.errors == []
+        # end
 
         test "email is null" do
             changeset = User.changeset(%User{}, %{ email: nil, username: "some_username", password: "some_password", password_confirmation: "some_password" })
